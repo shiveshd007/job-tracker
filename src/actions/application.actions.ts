@@ -20,7 +20,7 @@ export async function createApplication(data: {
   const result = applicationSchema.safeParse(data);
 
   if (!result.success) {
-    return { error: result.error.errors[0].message };
+    return { error: result.error.issues[0].message };
   }
 
   await prisma.application.create({
